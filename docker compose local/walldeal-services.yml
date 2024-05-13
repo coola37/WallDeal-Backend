@@ -1,0 +1,57 @@
+version: '3.3'
+
+services:
+  walldeal-web-service:
+    hostname: walldeal-web-service
+    image: wdimages.azurecr.io/webservice:latest
+    networks:
+      - web-service-network-backend
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+
+  eureka-server:
+    hostname: eureka-server
+    image: wdimages.azurecr.io/eureka-server:latest
+    networks:
+      - web-service-network-backend
+    expose: 
+      - 8761
+    ports:
+      - 8761:8761
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+
+  api-gateway:
+    hostname: api-gateway
+    image: wdimages.azurecr.io/api-gateway:latest
+    networks:
+      - web-service-network-backend
+    expose:
+      - 8762
+    ports:
+      - 8762:8762
+    environment:
+      - "SPRING_PROFILES_ACTIVE=stage"
+    entrypoint: ["java","-jar","app.jar"]
+
+  walldeal-cache-service:
+    hostname: walldeal-cache-service
+    image: wdimages.azurecr.io/cache-service:latest
+    networks:
+      - web-service-network-backend
+    expose:
+      - 9791
+    ports:
+      - 9791:9791
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+
+networks:
+  web-service-network-backend:

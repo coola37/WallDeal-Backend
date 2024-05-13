@@ -1,0 +1,18 @@
+version: '3.3'
+ 
+services:
+  walldeal-web-service:
+    hostname: walldeal-web-service
+    image: walldeal.azurecr.io/webservice:latest
+    networks:
+      - web-service-network-backend
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+ 
+networks:
+  web-service-network-backend:

@@ -1,0 +1,18 @@
+version: '3.3'
+ 
+services:
+  walldeal-cache-service:
+    hostname: walldeal-cache-service
+    image: wdcacheservice.azurecr.io/cache-service:latest
+    networks:
+      - web-service-network-backend
+    expose:
+      - 9791
+    ports:
+      - 9791:9791
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+ 
+networks:
+  web-service-network-backend:

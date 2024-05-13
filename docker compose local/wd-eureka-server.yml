@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  eureka-server:
+    hostname: eureka-server
+    image: wdeureka.azurecr.io/eureka-server:latest
+    networks:
+      - web-service-network-backend
+    expose: 
+      - 8761
+    ports:
+      - 8761:8761
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+
+networks: 
+  web-service-network-backend:

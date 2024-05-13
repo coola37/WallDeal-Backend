@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  config-server:
+    hostname: config-server
+    image: config-server:0.0.1
+    networks:
+      - web-service-network-backend
+    expose: 
+      - 8888
+    ports:
+      - 8888:8888
+    environment:
+      SPRING_PROFILES_ACTIVE: stage
+    entrypoint: ["java","-jar","app.jar"]
+
+networks: 
+  web-service-network-backend:
