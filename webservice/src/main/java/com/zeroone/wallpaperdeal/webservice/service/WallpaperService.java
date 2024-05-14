@@ -1,5 +1,6 @@
 package com.zeroone.wallpaperdeal.webservice.service;
 
+import com.zeroone.wallpaperdeal.webservice.entity.User;
 import com.zeroone.wallpaperdeal.webservice.entity.Wallpaper;
 
 import java.util.List;

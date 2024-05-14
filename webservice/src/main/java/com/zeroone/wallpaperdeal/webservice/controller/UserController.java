@@ -27,16 +27,31 @@ public class UserController {
     WallpaperService wallpaperService;
     @PostMapping
     User saveUser(@RequestBody User user){
-        UserDetail detail = new UserDetail();
-        detail.setFollowed(new ArrayList<>());
-        detail.setFollowers(new ArrayList<>());
-        detail.setFavoriteWallpapers(new ArrayList<>());
-        if( user.getUserDetail().getProfilePhoto() == null ||  user.getUserDetail().getProfilePhoto().isEmpty()){
-            detail.setProfilePhoto("https://firebasestorage.googleapis.com/v0/b/wall-deal.appspot.com/o/logo%2Fuser.png?alt=media&token=f38aa1f6-a721-4a83-ace9-6123c30d57a6");
-        }else{
-            detail.setProfilePhoto(user.getUserDetail().getProfilePhoto());
+        UserDetail userDetail = user.getUserDetail();
+        UserDetail newDetail = new UserDetail();
+        if(userDetail != null){
+            if(userDetail.getFollowed() != null && !(userDetail.getFollowed().isEmpty())){
+                newDetail.setFollowed(user.getUserDetail().getFollowed());
+            }else{
+                newDetail.setFollowed(new ArrayList<>());
+            }
+            if(userDetail.getFollowers() != null && !(userDetail.getFollowers().isEmpty())){
+                newDetail.setFollowers(user.getUserDetail().getFollowers());
+            }else{
+                newDetail.setFollowers(new ArrayList<>());
+            }
+            if(userDetail.getFavoriteWallpapers() != null && !(userDetail.getFavoriteWallpapers().isEmpty())){
+                newDetail.setFavoriteWallpapers(user.getUserDetail().getFavoriteWallpapers());
+            }else{
+                newDetail.setFavoriteWallpapers(new ArrayList<>());
+            }
         }
-        user.setUserDetail(detail);
+        if(userDetail.getProfilePhoto() == null ||  user.getUserDetail().getProfilePhoto().isEmpty()){
+            newDetail.setProfilePhoto("https://firebasestorage.googleapis.com/v0/b/wall-deal.appspot.com/o/logo%2Fuser.png?alt=media&token=f38aa1f6-a721-4a83-ace9-6123c30d57a6");
+        }else{
+            newDetail.setProfilePhoto(user.getUserDetail().getProfilePhoto());
+        }
+        user.setUserDetail(newDetail);
         userService.createUser(user);
         return user;
     }

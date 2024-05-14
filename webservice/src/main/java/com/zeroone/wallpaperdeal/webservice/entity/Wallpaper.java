@@ -17,7 +17,7 @@ public class Wallpaper {
     UserDTO owner;
     String imageUrl;
     String category;
-    String gradiantUrl;
     List<String> likedUser;
     Integer likeCount;
+    List<String> userAddedFavorite;
 }

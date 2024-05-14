@@ -152,12 +152,23 @@ public class WallpaperServiceImpl implements WallpaperService {
     public void removeWallpaper(String wallpaperId) {
         Firestore db = FirestoreClient.getFirestore();
         try{
+            Wallpaper targetWallpaper = getWallpaper(wallpaperId);
+            List<String> users = targetWallpaper.getUserAddedFavorite();
+            for(String userId : users){
+                User user = userService.getUser(userId);
+                UserDetail detail = user.getUserDetail();
+                List<Wallpaper> favoriteList = detail.getFavoriteWallpapers();
+                favoriteList.remove(targetWallpaper);
+                detail.setFavoriteWallpapers(favoriteList);
+                user.setUserDetail(detail);
+                userService.createUser(user);
+            }
+
             db.collection("wallpapers").document(wallpaperId).delete();
         }catch (RuntimeException ex){
             throw ex;
         }
     }
-
     @Override
     public List<Wallpaper> getWallpapersByCategory(String categoryName) {
         Firestore db = FirestoreClient.getFirestore();
@@ -196,7 +207,13 @@ public class WallpaperServiceImpl implements WallpaperService {
             }
             detail.setFavoriteWallpapers(favorites);
             user.setUserDetail(detail);
+
+            List<String> userAddedFavorite = wallpaper.getUserAddedFavorite();
+            userAddedFavorite.add(userId);
+            wallpaper.setUserAddedFavorite(userAddedFavorite);
+
             userService.createUser(user);
+            createWallpaper(wallpaper);
         }catch (Exception e){
             throw new RuntimeException();
         }

@@ -30,7 +30,6 @@ public class WallpaperController {
                 .owner(wallpaper.getOwner())
                 .description(wallpaper.getDescription())
                 .imageUrl(wallpaper.getImageUrl())
-                .gradiantUrl(wallpaper.getGradiantUrl())
                 .category(wallpaper.getCategory())
                 .likedUser(wallpaper.getLikedUser())
                 .likeCount(0)
