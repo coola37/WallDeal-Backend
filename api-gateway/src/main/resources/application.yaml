@@ -12,6 +12,10 @@ spring:
           uri: lb://walldeal-web-service/
           predicates:
             - Path=/api/1.0/**
+        - id: walldeal-cache-service
+          uri: lb://walldeal-cache-service/
+          predicates:
+            - Path=/api/1.0/**
 
 
 info:

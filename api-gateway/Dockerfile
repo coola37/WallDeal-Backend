@@ -4,7 +4,7 @@ ARG JAR_FILE=target/*.jar
 
 WORKDIR /opt/app
 
-ADD target/api-gateway-0.0.1-SNAPSHOT.jar app.jar
+ADD target/walldeal-apigateway.jar app.jar
 
 COPY ${JAR_FILE} app.jar
 

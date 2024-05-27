@@ -5,7 +5,7 @@ ARG JAR_FILE=target/*.jar
 # Define the directory where the serviceAccountKey.json will be copied
 WORKDIR /opt/app
 
-ADD target/walldeal-cache.jar app.jar
+ADD target/api-0.0.1-SNAPSHOT.jar app.jar
 
 # Copy the serviceAccountKey.json file into the container
 COPY serviceAccountKey.json /opt/app/serviceAccountKey.json
