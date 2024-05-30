@@ -159,124 +159,125 @@
 
 ### Endpoints:
 
-**Send Request**
+# Send Request
 
 - **Method:** POST
 - **URL:** `/api/1.0/walldeal/send-request/{senderUser}/{receiverUser}`
-- **Description:** Gönderen kullanıcıdan alıcı kullanıcıya çift isteği gönderir.
+- **Description:** Sends a couple request from the sender user to the receiver user.
 - **Parameters:**
-  - `senderUser` (String): İsteği gönderen kullanıcı.
-  - `receiverUser` (String): İsteği alan kullanıcı.
+  - `senderUser` (String): The user sending the request.
+  - `receiverUser` (String): The user receiving the request.
 - **Response:** No content.
 
-**Delete Request**
+# Delete Request
 
 - **Method:** DELETE
 - **URL:** `/api/1.0/walldeal/delete-request/{requestId}`
-- **Description:** Bir çift isteğini siler.
+- **Description:** Deletes a couple request.
 - **Parameters:**
-  - `requestId` (String): Silinecek isteğin kimliği.
-- **Response:** Başarılı olursa HTTP durumu.
+  - `requestId` (String): The ID of the request to be deleted.
+- **Response:** Success status.
 
-**Check WallDeal Request**
+# Check WallDeal Request
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/check-walldeal-request/{currentUserId}/{targetUserId}`
-- **Description:** İki kullanıcı arasında çift isteği olup olmadığını kontrol eder.
+- **Description:** Checks if a couple request exists between two users.
 - **Parameters:**
-  - `currentUserId` (String): Mevcut kullanıcı.
-  - `targetUserId` (String): Hedef kullanıcı.
-- **Response:** İsteğin var olup olmadığını belirten Boolean değeri.
+  - `currentUserId` (String): The current user.
+  - `targetUserId` (String): The target user.
+- **Response:** Boolean value indicating request existence.
 
-**Check WallDeal**
+# Check WallDeal
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/check-walldeal/{targetUserId}`
-- **Description:** Belirtilen kullanıcı için bir çift olup olmadığını kontrol eder.
+- **Description:** Checks if a couple exists for the specified user.
 - **Parameters:**
-  - `targetUserId` (String): Mevcut çifti kontrol edilecek kullanıcı.
-- **Response:** Çiftin var olup olmadığını belirten Boolean değeri.
+  - `targetUserId` (String): The user whose couple status is to be checked.
+- **Response:** Boolean value indicating couple existence.
 
-**Check WallDeal For Between User To User**
+# Check WallDeal For Between User To User
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/check-walldeal-for-between-user-to-user/{currentUserId}/{targetUserId}`
-- **Description:** İki belirli kullanıcı arasında çift olup olmadığını kontrol eder.
+- **Description:** Checks if a couple exists between two specified users.
 - **Parameters:**
-  - `currentUserId` (String): Mevcut kullanıcı.
-  - `targetUserId` (String): Hedef kullanıcı.
-- **Response:** Çiftin var olup olmadığını belirten Boolean değeri.
+  - `currentUserId` (String): The current user.
+  - `targetUserId` (String): The target user.
+- **Response:** Boolean value indicating couple existence.
 
-**Send Post**
+# Send Post
 
 - **Method:** PUT
 - **URL:** `/api/1.0/walldeal/send-post/{currentUserId}`
-- **Description:** Mevcut kullanıcı için bir duvar kağıdı talebi gönderir.
+- **Description:** Sends a wallpaper request for the current user.
 - **Parameters:**
-  - `currentUserId` (String): Mevcut kullanıcı.
-  - `request` (WallpaperRequest): Duvar kağıdı talebi.
+  - `currentUserId` (String): The current user.
+  - `request` (WallpaperRequest): The wallpaper request.
 - **Response:** No content.
 
-**Cancel Post**
+# Cancel Post
 
 - **Method:** PUT
 - **URL:** `/api/1.0/walldeal/cancel-post/{currentUserId}`
-- **Description:** Mevcut kullanıcı için bir duvar kağıdı talebini iptal eder.
+- **Description:** Cancels a wallpaper request for the current user.
 - **Parameters:**
-  - `currentUserId` (String): Mevcut kullanıcı.
-  - `request` (WallpaperRequest): Duvar kağıdı talebi.
+  - `currentUserId` (String): The current user.
+  - `request` (WallpaperRequest): The wallpaper request.
 - **Response:** No content.
 
-**Get Requests By UserId**
+# Get Requests By UserId
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/get-walldeal-request/{userId}`
-- **Description:** Kullanıcı kimliğine göre talepleri getirir.
+- **Description:** Retrieves requests by user ID.
 - **Parameters:**
-  - `userId` (String): Kullanıcı kimliği.
-- **Response:** Kullanıcının taleplerini içeren bir liste.
+  - `userId` (String): The user ID.
+- **Response:** A list containing the user's requests.
 
-**Get Wallpaper Request**
+# Get Wallpaper Request
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/get-wallpaper-request/{requestId}`
-- **Description:** Bir duvar kağıdı talebini getirir.
+- **Description:** Retrieves a wallpaper request by its ID.
 - **Parameters:**
-  - `requestId` (String): Talebin kimliği.
-- **Response:** İstenen duvar kağıdı talebi.
+  - `requestId` (String): The ID of the request.
+- **Response:** The requested wallpaper request.
 
-**Check Request Notifications**
+# Check Request Notifications
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/request-notification-check/{userId}`
-- **Description:** İstek bildirimlerini kontrol eder.
+- **Description:** Checks request notifications.
 - **Parameters:**
-  - `userId` (String): Kullanıcı kimliği.
-- **Response:** İstek bildirimlerinin olup olmadığını belirten Boolean değeri.
+  - `userId` (String): The user ID.
+- **Response:** Boolean value indicating the presence of request notifications.
 
-**Create WallDeal**
+# Create WallDeal
 
 - **Method:** POST
 - **URL:** `/api/1.0/walldeal/create-walldeal`
-- **Description:** Bir çift oluşturur.
+- **Description:** Creates a couple.
 - **Parameters:**
-  - `couple` (Couple): Çift bilgileri.
-- **Response:** Başarılı olursa HTTP durumu.
+  - `couple` (Couple): The couple details.
+- **Response:** Success status.
 
-**Get WallDeal**
+# Get WallDeal
 
 - **Method:** GET
 - **URL:** `/api/1.0/walldeal/get-walldeal/{userId}`
-- **Description:** Kullanıcı kimliğine göre mevcut çifti getirir.
+- **Description:** Retrieves the current couple for the specified user ID.
 - **Parameters:**
-  - `userId` (String): Kullanıcı kimliği.
-- **Response:** Mevcut çift bilgileri.
+  - `userId` (String): The user ID.
+- **Response:** The current couple details.
 
-**Cancel WallDeal**
+# Cancel WallDeal
 
 - **Method:** DELETE
 - **URL:** `/api/1.0/walldeal/cancel-walldeal/{userId}`
-- **Description:** Kullanıcı kimliğine göre mevcut çifti iptal eder.
+- **Description:** Cancels the current couple for the specified user ID.
 - **Parameters:**
-  - `userId` (String): Kullanıcı kimliği.
-- **Response:** Başarılı olursa HTTP durumu.
+  - `userId` (String): The user ID.
+- **Response:** Success status.
+
