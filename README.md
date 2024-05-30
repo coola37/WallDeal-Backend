@@ -1,6 +1,8 @@
 # Rest API for WallDeal
 ## Prepared for WallDeal -> `https://github.com/coola37/WallDeal`
 
+## Microservice architecture was used.
+
 ## Tools and libraries: 
 <p>Spring Boot, Spring Security, Spring Cloud</p>
 <p>Redis</p>
