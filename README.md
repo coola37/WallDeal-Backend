@@ -1,4 +1,16 @@
 # Rest API for WallDeal
+## Prepared for WallDeal -> `https://github.com/coola37/WallDeal`
+
+## Tools and libraries: 
+<p>Spring Boot, Spring Security, Spring Cloud</p>
+<p>Redis</p>
+<p>Firebase Authentication, Firestore Database, Firebase Messaging, Cloud Functions</p>
+<p>PostgreSQL</p>
+<p>JPA Repository</p>
+<p>AWS - Elastic Container Services</p>
+<p>API Gateway</p>
+<p>Docker</p>
+
 
 # API Documentation
 
